@@ -4,26 +4,28 @@ Simple SNTP Client class for retrieving network time on Android (SNTPClient)
 <img width="250" src="https://i.imgur.com/y9AODqW.png" />
 
 #### Copy-Paste
-Copy the `SNTPClient.java` into your project, there you go. It's ready.
+Copy the `NtpTime.kt` into your project, there you go. It's ready.
 
 #### Usage
 
 1. Retrieve the time of a specific time zone.
 
-```java
-SNTPClient.getDate(TimeZone.getTimeZone("Asia/Colombo"), new SNTPClient.Listener() {
-
-    @Override
-    public void onTimeResponse(String rawDate, Date date, Exception ex) {
-
-    }
-});
+```kotlin
+ NtpTime{ date, e ->
+     date?.let {
+         Log.i("dateInfo", "Success: $it")
+     }
+     e?.let {
+         android.util.Log.i("error", "Error ${it.message}")
+     }
+ }
 ```
 <hr>
 
-2. Current time zone can be passed to retrieve the current time of the device zone.
-```java
-Calendar.getInstance().getTimeZone();
+2. Default time zone is `TimeZone.getDefault()` You can use different timezone.
+```kotlin
+ NtpTime( TimeZone.getTimeZone("US/Eastern")){ date, e ->
+ }
 ```
 
 #### About more
