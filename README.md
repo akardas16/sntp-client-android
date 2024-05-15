@@ -24,8 +24,7 @@ Copy the `NtpTime.kt` into your project, there you go. It's ready.
 
 2. Default time zone is `TimeZone.getDefault()` You can use different timezone.
 ```kotlin
- NtpTime( TimeZone.getTimeZone("US/Eastern")){ date, e ->
- }
+ NtpTime( TimeZone.getTimeZone("US/Eastern")){ date, e -> }
 ```
 
 #### About more
